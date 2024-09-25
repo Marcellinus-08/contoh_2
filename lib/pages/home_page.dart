@@ -50,7 +50,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             Align(
                               child: Text(
-                                'Weather App', //TODO: change app name
+                                'Weather App',
                                 style: GoogleFonts.questrial(
                                   color: isDarkMode
                                       ? Colors.white
