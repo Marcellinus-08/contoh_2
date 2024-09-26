@@ -54,8 +54,8 @@ class _HomePageState extends State<HomePage> {
                                 style: GoogleFonts.questrial(
                                   color: isDarkMode
                                       ? Colors.white
-                                      : const Color(0xff1D1617),
-                                  fontSize: size.height * 0.02,
+                                      : Colors.brown,
+                                  fontSize: size.height * 0.025,
                                 ),
                               ),
                             ),
@@ -87,7 +87,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         child: Align(
                           child: Text(
-                            'Today', //day
+                            'Hari ini', //day
                             style: GoogleFonts.questrial(
                               color:
                               isDarkMode ? Colors.white54 : Colors.black54,
@@ -104,12 +104,9 @@ class _HomePageState extends State<HomePage> {
                           child: Text(
                             '$currTemp˚C', //curent temperature
                             style: GoogleFonts.questrial(
-                              color: currTemp <= 0
-                                  ? Colors.blue
-                                  : currTemp > 0 && currTemp <= 15
-                                  ? Colors.indigo
-                                  : currTemp > 15 && currTemp < 30
-                                  ? Colors.deepPurple
+                              color: currTemp <= 0 ? Colors.blue
+                                  : currTemp > 0 && currTemp <= 15 ? Colors.indigo
+                                  : currTemp > 15 && currTemp < 30 ? Colors.deepPurple
                                   : Colors.pink,
                               fontSize: size.height * 0.09,
                             ),
@@ -124,37 +121,28 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(
-                          top: size.height * 0.005,
-                        ),
+                        padding: EdgeInsets.only(top: size.height * 0.005,),
                         child: Align(
                           child: Text(
-                            'Sunny', // weather
+                            'Cerah Sekali', // weather
                             style: GoogleFonts.questrial(
-                              color:
-                              isDarkMode ? Colors.white54 : Colors.black54,
+                              color: isDarkMode ? Colors.white54 : Colors.black54,
                               fontSize: size.height * 0.03,
                             ),
                           ),
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(
-                          top: size.height * 0.03,
-                          bottom: size.height * 0.01,
-                        ),
+                        padding: EdgeInsets.only(top: size.height * 0.03, bottom: size.height * 0.01,),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
                               '$minTemp˚C', // min temperature
                               style: GoogleFonts.questrial(
-                                color: minTemp <= 0
-                                    ? Colors.blue
-                                    : minTemp > 0 && minTemp <= 15
-                                    ? Colors.indigo
-                                    : minTemp > 15 && minTemp < 30
-                                    ? Colors.deepPurple
+                                color: minTemp <= 0 ? Colors.blue
+                                    : minTemp > 0 && minTemp <= 15 ? Colors.indigo
+                                    : minTemp > 15 && minTemp < 30 ? Colors.deepPurple
                                     : Colors.pink,
                                 fontSize: size.height * 0.03,
                               ),
@@ -162,21 +150,16 @@ class _HomePageState extends State<HomePage> {
                             Text(
                               '/',
                               style: GoogleFonts.questrial(
-                                color: isDarkMode
-                                    ? Colors.white54
-                                    : Colors.black54,
+                                color: isDarkMode ? Colors.white54 : Colors.black54,
                                 fontSize: size.height * 0.03,
                               ),
                             ),
                             Text(
                               '$maxTemp˚C', //max temperature
                               style: GoogleFonts.questrial(
-                                color: maxTemp <= 0
-                                    ? Colors.blue
-                                    : maxTemp > 0 && maxTemp <= 15
-                                    ? Colors.indigo
-                                    : maxTemp > 15 && maxTemp < 30
-                                    ? Colors.deepPurple
+                                color: maxTemp <= 0 ? Colors.blue
+                                    : maxTemp > 0 && maxTemp <= 15 ? Colors.indigo
+                                    : maxTemp > 15 && maxTemp < 30 ? Colors.deepPurple
                                     : Colors.pink,
                                 fontSize: size.height * 0.03,
                               ),
@@ -193,25 +176,18 @@ class _HomePageState extends State<HomePage> {
                             borderRadius: const BorderRadius.all(
                               Radius.circular(10),
                             ),
-                            color: isDarkMode
-                                ? Colors.white.withOpacity(0.05)
-                                : Colors.black.withOpacity(0.05),
+                            color: isDarkMode ? Colors.white.withOpacity(0.05) : Colors.black.withOpacity(0.05),
                           ),
                           child: Column(
                             children: [
                               Align(
                                 alignment: Alignment.centerLeft,
                                 child: Padding(
-                                  padding: EdgeInsets.only(
-                                    top: size.height * 0.01,
-                                    left: size.width * 0.03,
-                                  ),
+                                  padding: EdgeInsets.only(top: size.height * 0.01, left: size.width * 0.03,),
                                   child: Text(
-                                    'Forecast for today',
+                                    'Ramalan Untuk Hari ini',
                                     style: GoogleFonts.questrial(
-                                      color: isDarkMode
-                                          ? Colors.white
-                                          : Colors.black,
+                                      color: isDarkMode ? Colors.white : Colors.black,
                                       fontSize: size.height * 0.025,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -224,50 +200,25 @@ class _HomePageState extends State<HomePage> {
                                   scrollDirection: Axis.horizontal,
                                   child: Row(
                                     children: [
-                                      buildForecastToday(
-                                        "Now", //hour
-                                        currTemp, //temperature
-                                        20, //wind (km/h)
-                                        0, //rain chance (%)
-                                        FontAwesomeIcons.sun, //weather icon
-                                        size,
-                                        isDarkMode,
+                                      ramalanHariIni(
+                                        "Sekarang", currTemp, 20, 0,
+                                        FontAwesomeIcons.sun, size, isDarkMode,
                                       ),
-                                      buildForecastToday(
-                                        "15:00",
-                                        1,
-                                        10,
-                                        40,
-                                        FontAwesomeIcons.cloud,
-                                        size,
-                                        isDarkMode,
+                                      ramalanHariIni(
+                                        "15:00", 1, 10, 40,
+                                        FontAwesomeIcons.cloud, size, isDarkMode,
                                       ),
-                                      buildForecastToday(
-                                        "16:00",
-                                        0,
-                                        25,
-                                        80,
-                                        FontAwesomeIcons.cloudRain,
-                                        size,
-                                        isDarkMode,
+                                      ramalanHariIni(
+                                        "16:00", 0, 25, 80,
+                                        FontAwesomeIcons.cloudRain, size, isDarkMode,
                                       ),
-                                      buildForecastToday(
-                                        "17:00",
-                                        -2,
-                                        28,
-                                        60,
-                                        FontAwesomeIcons.snowflake,
-                                        size,
-                                        isDarkMode,
+                                      ramalanHariIni(
+                                        "17:00", -2, 28, 60,
+                                        FontAwesomeIcons.snowflake, size, isDarkMode,
                                       ),
-                                      buildForecastToday(
-                                        "18:00",
-                                        -5,
-                                        13,
-                                        40,
-                                        FontAwesomeIcons.cloudMoon,
-                                        size,
-                                        isDarkMode,
+                                      ramalanHariIni(
+                                        "18:00", -5, 13, 40,
+                                        FontAwesomeIcons.cloudMoon, size, isDarkMode,
                                       ),
                                     ],
                                   ),
@@ -299,11 +250,9 @@ class _HomePageState extends State<HomePage> {
                                     left: size.width * 0.03,
                                   ),
                                   child: Text(
-                                    '7-day forecast',
+                                    'Ramalan Untuk 7 Hari',
                                     style: GoogleFonts.questrial(
-                                      color: isDarkMode
-                                          ? Colors.white
-                                          : Colors.black,
+                                      color: isDarkMode ? Colors.white : Colors.black,
                                       fontSize: size.height * 0.025,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -317,8 +266,8 @@ class _HomePageState extends State<HomePage> {
                                 padding: EdgeInsets.all(size.width * 0.005),
                                 child: Column(
                                   children: [
-                                    buildSevenDayForecast(
-                                      "Today", //day
+                                    ramalanTujuhHari(
+                                      "Hari Ini", //day
                                       minTemp, //min temperature
                                       maxTemp, //max temperature
                                       FontAwesomeIcons.cloud, //weather icon
@@ -343,7 +292,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget buildForecastToday(String time, int temp, int wind, int rainChance,
+  Widget ramalanHariIni(String time, int temp, int wind, int rainChance,
       IconData weatherIcon, size, bool isDarkMode) {
     return Padding(
       padding: EdgeInsets.all(size.width * 0.025),
@@ -365,7 +314,7 @@ class _HomePageState extends State<HomePage> {
                 child: FaIcon(
                   weatherIcon,
                   color: isDarkMode ? Colors.white : Colors.black,
-                  size: size.height * 0.03,
+                  size: size.height * 0.035,
                 ),
               ),
             ],
@@ -374,7 +323,7 @@ class _HomePageState extends State<HomePage> {
             '$temp˚C',
             style: GoogleFonts.questrial(
               color: isDarkMode ? Colors.white : Colors.black,
-              fontSize: size.height * 0.025,
+              fontSize: size.height * 0.035,
             ),
           ),
           Row(
@@ -395,7 +344,7 @@ class _HomePageState extends State<HomePage> {
             '$wind km/h',
             style: GoogleFonts.questrial(
               color: Colors.grey,
-              fontSize: size.height * 0.02,
+              fontSize: size.height * 0.025,
             ),
           ),
           Row(
@@ -407,7 +356,7 @@ class _HomePageState extends State<HomePage> {
                 child: FaIcon(
                   FontAwesomeIcons.umbrella,
                   color: Colors.blue,
-                  size: size.height * 0.03,
+                  size: size.height * 0.05,
                 ),
               ),
             ],
@@ -416,7 +365,7 @@ class _HomePageState extends State<HomePage> {
             '$rainChance %',
             style: GoogleFonts.questrial(
               color: Colors.blue,
-              fontSize: size.height * 0.02,
+              fontSize: size.height * 0.035,
             ),
           ),
         ],
@@ -424,7 +373,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget buildSevenDayForecast(String time, int minTemp, int maxTemp,
+  Widget ramalanTujuhHari(String time, int minTemp, int maxTemp,
       IconData weatherIcon, size, bool isDarkMode) {
     return Padding(
       padding: EdgeInsets.all(
